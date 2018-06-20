@@ -1,10 +1,10 @@
 class GroupsController < ApplicationController
   before_action :set_group, only: [:show, :edit, :update, :destroy]
-
   # GET /groups
   # GET /groups.json
   def index
     @groups = Group.all
+    
   end
 
   # GET /groups/1
@@ -25,7 +25,6 @@ class GroupsController < ApplicationController
   # POST /groups.json
   def create
     @group = Group.new(group_params)
-
     respond_to do |format|
       if @group.save
         format.html { redirect_to @group, notice: 'Group was successfully created.' }
@@ -35,6 +34,7 @@ class GroupsController < ApplicationController
         format.json { render json: @group.errors, status: :unprocessable_entity }
       end
     end
+
   end
 
   # PATCH/PUT /groups/1
