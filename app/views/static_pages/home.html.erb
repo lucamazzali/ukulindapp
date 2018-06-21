@@ -3,7 +3,18 @@
 
 <% if current_user %>
   Welcome <%= current_user.username %> <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
-  <%= @user_groups.each{ |u| u } %>
+  <!-- <%= simple_format @user_groups.to_yaml %> -->
+  <h2>I tuoi gruppi</h2>
+  <ul>
+      <% @user_groups.each do |u| %>
+        <li>
+          <%= link_to "/groups" do %>
+            <%= u.name %>
+          <% end %>
+        </li>
+      <% end %>
+  </ul>
+
 <% else %>
   <%= link_to 'Login', new_user_session_path %>
 <% end %>
